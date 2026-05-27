@@ -11,17 +11,9 @@
 
 import path from "path"
 import os from "os"
-import { execSync } from "child_process"
 import { fileURLToPath } from "url"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-
-const UVX_CMD = [
-  "uvx",
-  "--from",
-  "markitdown[all]@git+https://github.com/microsoft/markitdown.git#subdirectory=packages/markitdown",
-  "markitdown",
-]
 
 /**
  * Find @opencode-ai/plugin module by checking known OpenCode installation paths.
@@ -31,7 +23,8 @@ function findPluginPath(): string {
   return path.join(homeDir, ".config", "opencode", "node_modules", "@opencode-ai", "plugin")
 }
 
-export default async function MarkItDownPlugin(_ctx: any) {
+export const MarkItDownPlugin = async (ctx) => {
+  const { $ } = ctx
   const pluginPath = findPluginPath()
   const { tool } = await import(path.join(pluginPath, "dist", "index.js"))
 
@@ -52,15 +45,7 @@ export default async function MarkItDownPlugin(_ctx: any) {
         },
         async execute(args: { path: string }) {
           try {
-            const output = execSync(
-              [...UVX_CMD, args.path].join(" ") + " 2>/dev/null",
-              {
-                encoding: "utf-8",
-                maxBuffer: 50 * 1024 * 1024,
-                timeout: 120_000,
-              },
-            )
-            return output
+            return await $`uvx --from markitdown[all]@git+https://github.com/microsoft/markitdown.git#subdirectory=packages/markitdown markitdown ${args.path}`.text()
           } catch (err: any) {
             if (err.stdout) return err.stdout
             throw new Error(`markitdown failed: ${err.message}`)
