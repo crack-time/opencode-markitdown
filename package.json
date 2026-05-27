@@ -1,0 +1,26 @@
+{
+  "name": "opencode-markitdown",
+  "version": "1.0.0",
+  "description": "OpenCode plugin for document-to-Markdown conversion via Microsoft MarkItDown",
+  "type": "module",
+  "main": "opencode-markitdown.ts",
+  "keywords": [
+    "opencode",
+    "markitdown",
+    "plugin",
+    "document",
+    "markdown",
+    "pdf",
+    "conversion"
+  ],
+  "author": "Chen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crack-time/opencode-markitdown.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crack-time/opencode-markitdown/issues"
+  },
+  "homepage": "https://github.com/crack-time/opencode-markitdown#readme"
+}
