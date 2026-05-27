@@ -10,7 +10,6 @@
  */
 
 import path from "path"
-import fs from "fs"
 import os from "os"
 import { execSync } from "child_process"
 import { fileURLToPath } from "url"
@@ -27,25 +26,13 @@ const UVX_CMD = [
 /**
  * Find @opencode-ai/plugin module by checking known OpenCode installation paths.
  */
-function findPluginPath(): string | null {
+function findPluginPath(): string {
   const homeDir = os.homedir()
-  const possibleDirs = [
-    path.join(homeDir, ".config", "opencode", "node_modules", "@opencode-ai", "plugin"),
-    path.join(homeDir, ".cache", "opencode", "node_modules", "@opencode-ai", "plugin"),
-  ]
-  for (const dir of possibleDirs) {
-    if (fs.existsSync(path.join(dir, "package.json"))) {
-      return dir
-    }
-  }
-  return null
+  return path.join(homeDir, ".config", "opencode", "node_modules", "@opencode-ai", "plugin")
 }
 
 export default async function MarkItDownPlugin(_ctx: any) {
   const pluginPath = findPluginPath()
-  if (!pluginPath) {
-    throw new Error("Cannot find @opencode-ai/plugin. Please ensure OpenCode is installed.")
-  }
   const { tool } = await import(path.join(pluginPath, "dist", "index.js"))
 
   return {
