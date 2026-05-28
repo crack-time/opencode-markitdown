@@ -9,9 +9,9 @@
  * First run downloads dependencies (~30s), subsequent runs use cache.
  */
 
-import { tool } from "@opencode-ai/plugin"
+import { type Plugin, tool } from "@opencode-ai/plugin"
 
-export const MarkItDownPlugin = (ctx) => {
+export const MarkItDownPlugin: Plugin = async (ctx) => {
   const { $ } = ctx
 
   return {
