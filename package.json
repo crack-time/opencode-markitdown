@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/crack-time/opencode-markitdown/issues"
   },
-  "homepage": "https://github.com/crack-time/opencode-markitdown#readme"
+  "homepage": "https://github.com/crack-time/opencode-markitdown#readme",
+  "devDependencies": {
+    "@opencode-ai/plugin": "^1.15.11"
+  }
 }
