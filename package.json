@@ -1,6 +1,6 @@
 {
   "name": "opencode-markitdown",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "OpenCode plugin for document-to-Markdown conversion via Microsoft MarkItDown",
   "type": "module",
   "main": "dist/index.js",
@@ -8,7 +8,7 @@
     "dist/"
   ],
   "scripts": {
-    "build": "esbuild opencode-markitdown.ts --bundle --platform=node --format=esm --outfile=dist/index.js",
+    "build": "esbuild opencode-markitdown.ts --bundle --platform=node --format=esm --external:@opencode-ai/plugin --outfile=dist/index.js",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
@@ -24,6 +24,9 @@
   "license": "MIT",
   "devDependencies": {
     "esbuild": "^0.25.0"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": ">=1.0.0"
   },
   "repository": {
     "type": "git",

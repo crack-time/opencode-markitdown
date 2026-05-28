@@ -9,24 +9,10 @@
  * First run downloads dependencies (~30s), subsequent runs use cache.
  */
 
-import path from "path"
-import os from "os"
-import { fileURLToPath } from "url"
+import { tool } from "@opencode-ai/plugin"
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-
-/**
- * Find @opencode-ai/plugin module by checking known OpenCode installation paths.
- */
-function findPluginPath(): string {
-  const homeDir = os.homedir()
-  return path.join(homeDir, ".config", "opencode", "node_modules", "@opencode-ai", "plugin")
-}
-
-export const MarkItDownPlugin = async (ctx) => {
+export const MarkItDownPlugin = (ctx) => {
   const { $ } = ctx
-  const pluginPath = findPluginPath()
-  const { tool } = await import(path.join(pluginPath, "dist", "index.js"))
 
   return {
     tool: {
