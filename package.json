@@ -1,6 +1,6 @@
 {
   "name": "opencode-markitdown",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "OpenCode plugin for document-to-Markdown conversion via Microsoft MarkItDown",
   "type": "module",
   "main": "dist/index.js",
