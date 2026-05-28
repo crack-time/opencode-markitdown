@@ -11,11 +11,11 @@
 
 import path from "path"
 import { fileURLToPath } from "url"
-import { tool as t } from "@opencode-ai/plugin"
+import { type Plugin, tool as t } from "@opencode-ai/plugin"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-export const MarkItDownPlugin = async (ctx) => {
+export const MarkItDownPlugin: Plugin = async (ctx) => {
   const { $ } = ctx
 
   return {
