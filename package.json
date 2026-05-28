@@ -4,6 +4,7 @@
   "description": "OpenCode plugin for document-to-Markdown conversion via Microsoft MarkItDown",
   "type": "module",
   "main": "dist/index.js",
+  "exports": "./dist/index.js",
   "files": [
     "dist/"
   ],
