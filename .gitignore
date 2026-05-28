@@ -1,4 +1,4 @@
-node_modules/
+# node_modules/ committed for git-cache compatibility
 *.pyc
 __pycache__/
 .DS_Store
