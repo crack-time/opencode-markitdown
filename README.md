@@ -28,13 +28,15 @@ brew install uv
 
 ## Installation
 
-Add to your `opencode.json`:
+```bash
+opencode plugin opencode-markitdown
+```
+
+Or add to your `opencode.json`:
 
 ```json
 {
-  "plugin": [
-    "opencode-markitdown@git+https://github.com/crack-time/opencode-markitdown.git"
-  ]
+  "plugin": ["opencode-markitdown"]
 }
 ```
 
